@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-install_requires = []
+install_requires = ['BeautifulSoup']
 
 classifiers = """
 Intended Audience :: Education
@@ -10,7 +10,6 @@ Intended Audience :: Science/Research
 License :: OSI Approved :: GNU General Public License (GPL)
 Programming Language :: Python
 Development Status :: 3 - Alpha
-Topic :: Scientific/Engineering :: Bio-Informatics
 """
 
 setup(

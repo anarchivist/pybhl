@@ -19,7 +19,7 @@
 
 __version__ = '0.1'
 
-from pybhl import request
+from pybhl.request import BHLOpenURLRequest
 
 def main():
     pass

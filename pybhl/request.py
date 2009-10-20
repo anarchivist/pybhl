@@ -35,6 +35,7 @@ class BHLOpenURLRequest(object):
     # ropenurl for Ruby
     
     def __init__(self, format='json', **kwargs):
+        """Constructor method"""
         self.baseurl = 'http://www.biodiversitylibrary.org/openurl'
         self.format = format
         if self.format == 'json':
@@ -45,16 +46,19 @@ class BHLOpenURLRequest(object):
         self.openurl_version = '0.1'
     
     def validate(self):
+        """Simple validator method"""
         for param in self.params:
             if param not in VALID_PARAMS[self.openurl_version]:
                 raise ValueError, "Improper parameter for OpenURL version %s"\
                 % self.openurl_version
     
     def create_url(self):
+        """Generates URL for request to BHL's API"""
         return self.baseurl + '?format=' + self.format + '&' \
             + urlencode(self.params)
     
     def get_response(self):
+        """Get a BHLResponse object based on a created request"""
         url = self.create_url()
         rsp = urllib2.urlopen(url).read()
         return BHLResponse(self, rsp)

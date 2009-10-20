@@ -29,8 +29,9 @@ from BeautifulSoup import BeautifulSoup
 OCRID = 'ctl00_toolbarContentPlaceHolder_titleVolumeSelectionControl_linkOCR'
 
 class BHLResponse(object):
-    """docstring for BHLResponse"""
+    """Response class for BHLOpenURLRequests"""
     def __init__(self, request, data):
+        """Constructor method"""
         super(BHLResponse, self).__init__()
         self.format = request.format
         if request.parsing is True and request.format == 'json':
@@ -41,6 +42,7 @@ class BHLResponse(object):
             self.parsed = False
 
     def get_ocr_url(self, index):
+        """Get the URL containing the OCRed text from archive.org"""
         if (self.format == 'json') and self.parsed:
             pageurl = self.data['citations'][index]['Url']
             soup = BeautifulSoup(urlopen(pageurl).read())
