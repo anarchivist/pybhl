@@ -1,0 +1,55 @@
+DESCRIPTION
+-----------
+
+pybhl is a Python module that works with the Biodiversity Heritage Library
+(BHL) OpenURL-based API to retrieve metadata about material held in the BHL's
+online collections. pybhl is loosely based on mjy's rubyBHL (see
+http://github.com/mjy/rubyBHL for code, etc.).
+
+DEPENDENCIES
+------------
+
+* simplejson or Python >= 2.6
+* BeautifulSoup
+
+
+INSTALLATION
+------------
+
+You can use easy_install to install the module:
+
+    easy_install pybhl
+
+If you prefer, you can get the latest version of the source using Git
+
+    git clone git://github.com/anarchivist/pybhl.git
+
+To install:
+
+    python setup.py install
+    
+USAGE
+-----
+
+>>> import pybhl
+>>> b = pybhl.BHLOpenURLRequest(genre='book', title='Manual of North American Diptera', aufirst='Samuel Wendell', aulast='Williston', date='1908', spage='16')
+>>> r = b.get_response()
+>>> r.data
+{u'Status': 1, u'Message': u'', u'citations': [{u'Title': u'Manual of North American Diptera /  by Samuel W. Williston.', u'ATitle': u'', u'ItemUrl': u'http://www.biodiversitylibrary.org/item/16772', u'Subjects': [u'Diptera', u'North America', u''], u'PublisherName': u'J.T. Hathaway,', u'Volume': u'', u'Lccn': u'08024896', u'Authors': [u'Williston, Samuel Wendell,'], u'Date': u'1908', u'Pages': u'', u'PublicationFrequency': u'', u'TitleUrl': u'http://www.biodiversitylibrary.org/bibliography/1704', u'Language': u'English', u'Url': u'http://www.biodiversitylibrary.org/page/1316635', u'Issn': u'', u'Genre': u'Book', u'PublisherPlace': u'New Haven :', u'EPage': u'', u'SPage': u'Page 16', u'STitle': u'', u'Isbn': u'', u'Edition': u'3rd ed. ', u'Oclc': u'6445326'}]}
+>>> r.get_ocr_url(0)
+u'http://www.archive.org/download/manualofnorthame00will/manualofnorthame00will_djvu.txt'
+
+MORE INFORMATION
+----------------
+
+Biodiversity Heritage Library
+- http://www.biodiversitylibrary.org/
+
+BHL's OpenURL Resolver
+- http://www.biodiversitylibrary.org/openurlhelp.aspx
+
+OpenURL 0.1
+- http://alcme.oclc.org/openurl/docs/pdf/openurl-01.pdf
+
+OpenURL 1.0
+- http://www.niso.org/kst/reports/standards?step=2&project_key=d5320409c5160be4697dc046613f71b9a773cd9e
